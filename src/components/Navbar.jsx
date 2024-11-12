@@ -21,9 +21,9 @@ const Navbar = () => {
         <a href="#contact" onClick={toggleMenu}>Contacto</a>
       </div>
       <div className="navbar-toggle" onClick={toggleMenu}>
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
+        <span className={`bar ${isOpen ? 'open' : ''}`}></span>
+        <span className={`bar ${isOpen ? 'open' : ''}`}></span>
+        <span className={`bar ${isOpen ? 'open' : ''}`}></span>
       </div>
     </nav>
   );

@@ -1,75 +1,107 @@
 /* src/components/Navbar.css */
 
+/* Estilos generales */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #333;
-    color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .navbar-logo a {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo a {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #007bff;
+}
+
+/* Estilos para el botón hamburguesa */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Cambios en las barras del menú cuando está abierto */
+.bar.open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.bar.open:nth-child(2) {
+  opacity: 0;
+}
+
+.bar.open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
   .navbar-links {
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  .navbar-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-links a:hover {
-    color: #007bff;
-  }
-  
-  .navbar-toggle {
-    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    height: calc(100vh - 60px);
+    width: 100%;
     flex-direction: column;
-    cursor: pointer;
+    background-color: #333;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: -1;
   }
-  
-  .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 4px;
-    transition: transform 0.3s ease;
+
+  /* Menu activo (visible) */
+  .navbar-links.active {
+    transform: translateY(0);
+    z-index: 999;
   }
-  
-  /* Responsive menu for smaller screens */
-  @media (max-width: 768px) {
-    .navbar-links {
-      position: absolute;
-      top: 60px;
-      right: 0;
-      height: calc(100vh - 60px);
-      width: 100%;
-      flex-direction: column;
-      background-color: #333;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease-in-out;
-      text-align: center;
-    }
-  
-    .navbar-links.active {
-      transform: translateY(0);
-    }
-  
-    .navbar-toggle {
-      display: flex;
-    }
+
+  .navbar-toggle {
+    display: flex;
   }
-  
+
+  .navbar-links a {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .navbar-links a:hover {
+    background-color: #444;
+    color: #fff;
+  }
+}
